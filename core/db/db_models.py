@@ -1,10 +1,10 @@
 # SQLAlchemy database models
-from sqlalchemy import Column, Integer, String, Text, func
+from sqlalchemy import Column, String, Text, func, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 
-from core.db import Base
+from core.db import db_conn
 
-class Data(Base):
+class Data(db_conn.Base):
     __tablename__ = 'data'
 
     uuid_field = Column(UUID(as_uuid=True), default=func.gen_random_uuid(), primary_key=True)  # UUID field with auto-generated value
@@ -19,3 +19,6 @@ class Data(Base):
     field8 = Column(Text)
     field9 = Column(Text)
     field10 = Column(Text)
+    # Adding created and updated time
+    created_time = Column(DateTime, default=func.now())
+    updated_time = Column(DateTime, default=func.now(), onupdate=func.now())  # Will update automatically on record change
