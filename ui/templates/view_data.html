@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 12px;
+            margin: 0 auto;
+            width: 90%;  /* Set a fixed width that doesn't extend till the end */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            table-layout: fixed; /* Fixes the table layout within the container */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            word-wrap: break-word; /* Prevents text from overflowing the cell */
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Search Data</h1>
+        <form action="/view_data" method="POST">
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" name="phone_number" placeholder="Enter Phone Number">
+            </div>
+            
+            <div class="form-group">
+                <label for="size">Size:</label>
+                <input type="number" name="size" placeholder="Enter Size (e.g., 2)">
+            </div>
+            
+            <button type="submit">Search</button>
+        </form>
+
+        <h2>Results</h2>
+        
+        {% if data %}
+        <table>
+            <thead>
+                <tr>
+                    {% for key in data[0].keys() %}
+                        <th>{{ key }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    {% for value in item.values() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No results found</p>
+        {% endif %}
+        
+        <div class="link">
+            <a href="/add_data">Add Data</a>
+        </div>
+    </div>
+
+</body>
+</html>

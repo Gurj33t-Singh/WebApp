@@ -1,5 +1,5 @@
 # SQLAlchemy database models
-from sqlalchemy import Column, String, Text, func, DateTime
+from sqlalchemy import Column, String, Text, func, DateTime, Boolean
 from sqlalchemy.dialects.postgresql import UUID
 
 from core.db import db_conn
@@ -18,7 +18,7 @@ class Data(db_conn.Base):
     field7 = Column(Text)
     field8 = Column(Text)
     field9 = Column(Text)
-    field10 = Column(Text)
+    field10 = Column(Boolean)
     # Adding created and updated time
     created_time = Column(DateTime, default=func.now())
     updated_time = Column(DateTime, default=func.now(), onupdate=func.now())  # Will update automatically on record change

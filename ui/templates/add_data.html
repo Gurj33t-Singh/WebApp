@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignOn UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="checkbox"] {
+            width: 90%;  /* Set fixed width to 90% */
+            padding: 10px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="checkbox"] {
+            width: auto;  /* Leave checkbox width auto */
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Enter the details below:</h1>
+        <form action="/add_data" method="POST">
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" required>
+            </div>
+
+            {% for i in range(1, 10) %}
+            <div class="form-group">
+                <label for="field{{ i }}">Field {{ i }}:</label>
+                <input type="text" id="field{{ i }}" name="field{{ i }}">
+            </div>
+            {% endfor %}
+
+            <div class="form-group">
+                <label for="field10">Do you agree to the Terms & Conditions?</label>
+                <input type="checkbox" id="field10" name="field10">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="link">
+            <a href="/view_data">View Data</a>
+        </div>
+    </div>
+
+</body>
+</html>

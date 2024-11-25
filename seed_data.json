@@ -10,7 +10,7 @@
       "field7": "value7",
       "field8": "value8",
       "field9": "value9",
-      "field10": "value10"
+      "field10": true
     },
     {
       "phone_number": "9900000002",
@@ -23,6 +23,6 @@
       "field7": "value7",
       "field8": "value8",
       "field9": "value9",
-      "field10": "value10"
+      "field10": false
     }
   ]

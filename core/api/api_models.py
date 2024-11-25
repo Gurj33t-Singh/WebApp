@@ -11,7 +11,7 @@ class Data(BaseModel):
     field7: str = Field(description="Value for field7")
     field8: str = Field(description="Value for field8")
     field9: str = Field(description="Value for field9")
-    field10: str = Field(description="Value for field10")
+    field10: bool = Field(description="Value for field10")
 
     class Config:
         from_attributes = True
